@@ -1,0 +1,71 @@
+info:
+  title: QuizMe API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/
+    description: Local dev server
+  - url: https://api.quizme.dev/
+    description: Google Cloud App Engine instance
+paths:
+  /users:
+    post:
+      summary: Add user
+      body:
+        userName: string
+        password: string
+        avatar: integer
+    get:
+      sumary: Get all users (leaderboard)
+      responses:
+        200:
+          body: [
+            userName: string,
+            avatar: integer,
+            points: integer
+          ]
+  /users/:username:
+    get:
+      summary: Get user info
+      responses:
+        200:
+          body:
+            avatar: integer
+            points: integer #correct answers (cumulative)
+    put:
+      summary: Update user info #User must be logged in
+      body:
+        username: string
+        password: string
+        avatar: integer
+        deleted: boolean
+  /quiz/:categoryId: #4 categories - General Knowledge - Music - Video Games - Computers
+    get:
+      summary: Get a quiz
+      responses:
+        200: 
+          body:
+            name: string
+            questions: [
+              {
+                question: string,
+                answers: string[],
+                correctAnswer: integer
+              }
+            ]
+    put:
+      summary: Modify a quiz
+      body:
+        name: string
+        questions: [
+          {
+            question: string,
+            answers: string[],
+            correctAnswer: integer
+          }
+        ]
+
+  /quiz:
+    post:
+      summary: Create a quiz
+      body:
+        questions
