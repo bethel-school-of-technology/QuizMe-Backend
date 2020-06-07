@@ -13,5 +13,8 @@
     "morgan": "~1.9.1",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.12"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
