@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       }
   }, {});
-  quiz.associate = function(models) {
+  highscores.associate = function(models) {
     // associations can be defined here
   };
   return highscores;
