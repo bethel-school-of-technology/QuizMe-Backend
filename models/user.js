@@ -12,15 +12,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: {
         type: DataTypes.STRING
-    },
-    avatar: {
-        type: DataTypes.INTEGER
-    },
-    points: {
-        type: DataTypes.INTEGER
-    },
-    admin: {
-        type: DataTypes.BOOLEAN
     }
   }, {});
   user.associate = function(models) {
