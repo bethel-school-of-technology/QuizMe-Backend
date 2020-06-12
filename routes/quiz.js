@@ -3,6 +3,7 @@ var router = express.Router();
 const mysql = require('mysql2');
 var models = require('../models');
 
+
 /* GET home page. */
 // router.get('/quiz/categoryid', function(req, res, next) {
 //   res.render('quiz', { title: 'Express' });
