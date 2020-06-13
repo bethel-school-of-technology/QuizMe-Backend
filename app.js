@@ -8,7 +8,6 @@ var models = require('./models');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var quizRouter = require('./routes/quiz');
 
 var app = express();
 app.use(bodyParser.json());
@@ -21,7 +20,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/quiz', quizRouter);
 
 models.sequelize.sync().then(() => console.log("DB Synced Up"))
     .catch(() => console.log("DB Failed to sync"));
