@@ -15,15 +15,25 @@ var authService = {
     );
     return token;
   },
-  verifyUser: function (token) {  
+  verifyUserForProfile: function (token) {  
     try {
       let decoded = jwt.verify(token, 'mik3sKey'); 
-      return models.users.findByPk(decoded.id); 
+      return models.user.findByPk(decoded.id); 
+    } catch (err) {
+      console.log(err);
+      return null;
+    }
+  },
+  verifyUserForHighscorePutRoute: function (token) {  
+    try {
+      let decoded = jwt.verify(token, 'mik3sKey'); 
+      return models.hoghscore.findByPk(decoded.id); 
     } catch (err) {
       console.log(err);
       return null;
     }
   }
+
 }
 
 module.exports = authService;

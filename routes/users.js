@@ -52,7 +52,7 @@ router.post('/login', function (req, res, next) {
 router.get('/profile', function (req, res, next) {
   let token = req.cookies.jwt;
   if (token) {
-    authService.verifyUser(token)
+    authService.verifyUserForProfile(token)
       .then(user => {
         if (user) {
           res.send(JSON.stringify(user));
