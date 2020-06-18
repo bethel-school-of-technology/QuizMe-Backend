@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     playername: {
       type: DataTypes.STRING
     },
-    highscore: {
+    score: {
         type: DataTypes.INTEGER
       }
   }, {});
