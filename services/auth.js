@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const models = require('../models/index');
+const models = require('../models');
 
 var authService = {
   signUser: function(user) {
@@ -18,12 +18,13 @@ var authService = {
   verifyUser: function (token) {  
     try {
       let decoded = jwt.verify(token, 'mik3sKey'); 
-      return models.users.findByPk(decoded.id); 
+      return models.user.findByPk(decoded.id); 
     } catch (err) {
       console.log(err);
       return null;
     }
   }
+
 }
 
 module.exports = authService;

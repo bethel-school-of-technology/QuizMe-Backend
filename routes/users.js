@@ -3,28 +3,6 @@ var router = express.Router();
 var models = require('../models');
 var authService = require('../services/auth');
 
-// /* GET all users listing. */
-// router.get('/', function(req, res, next) {
-//   models.users.findAll().then(users =>{
-//   res.json(users)
-//   })
-// });
-
-// /* GET one user listing. */
-// router.get('/users:id', function(req, res, next) {
-//   models.users.findByPk(parseInt(req.params.id)).then(user =>{
-//     res.json(user)
-//   })
-// });
-
-// /* Create user */
-// router.post('/user', function(req, res, next) {
-//   models.post.create(req.body).then(() => {
-//   res.json({message: 'Created user!'})
-    
-//   });
-// });
-
 // Create new user if one doesn't exist
 router.post('/signup', function(req, res, next) {
   models.user
