@@ -7,12 +7,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       autoIncrement: true
     },
+    category: {
+      type: DataTypes.INTEGER
+    },
     playername: {
       type: DataTypes.STRING
     },
     highscore: {
         type: DataTypes.INTEGER
-      }
+    }
   }, {});
   highscores.associate = function(models) {
     // associations can be defined here
