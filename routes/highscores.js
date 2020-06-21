@@ -27,18 +27,6 @@ router.get('/', function(req, res, next) {
       });
   });
 
-// PUT route for admins (needs security)
-// router.put("/:id", function (req, res, next) {
-//     let highscoreId = parseInt(req.params.id);
-//     models.highscores
-//       .update(req.body, { where: { id: highscoreId } })
-//       .then(result => res.redirect('/'))
-//       .catch(err => {
-//         res.status(400);
-//         res.send("There was a problem updating the highscore.");
-//       })
-//   });
-
 // secured put route for admins
 router.put("/:id", function (req, res, next) {
   let highscore_id = parseInt(req.params.id);
