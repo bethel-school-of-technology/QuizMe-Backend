@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const models = require('../models/index');
+const models = require('../models');
 
 var authService = {
   signUser: function(user) {
@@ -15,19 +15,10 @@ var authService = {
     );
     return token;
   },
-  verifyUserForProfile: function (token) {  
+  verifyUser: function (token) {  
     try {
       let decoded = jwt.verify(token, 'mik3sKey'); 
       return models.user.findByPk(decoded.id); 
-    } catch (err) {
-      console.log(err);
-      return null;
-    }
-  },
-  verifyUserForHighscorePutRoute: function (token) {  
-    try {
-      let decoded = jwt.verify(token, 'mik3sKey'); 
-      return models.hoghscore.findByPk(decoded.id); 
     } catch (err) {
       console.log(err);
       return null;
