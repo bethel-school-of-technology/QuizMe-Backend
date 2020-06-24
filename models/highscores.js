@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     playername: {
       type: DataTypes.STRING
     },
-    score: {
+    highscore: {
         type: DataTypes.INTEGER
     }
   }, {});
