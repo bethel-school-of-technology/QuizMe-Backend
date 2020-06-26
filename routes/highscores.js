@@ -20,7 +20,9 @@ router.post('/', function (req, res, next) {
 // GET for the highscores page
 router.get('/', function(req, res, next) {
     models.highscores
-      .findAll()
+      .findAll({
+        order: [['highscore', 'DESC']] 
+      })
       .then(highscoresFound => {
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(highscoresFound));
