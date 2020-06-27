@@ -19,13 +19,20 @@ router.post('/', function (req, res, next) {
 
 // GET for the highscores page
 router.get('/', function(req, res, next) {
-    models.highscores
-      .findAll()
-      .then(highscoresFound => {
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(highscoresFound));
-      });
-  });
+  models.highscores
+    .findAll()
+    .then(highscoresFound => {
+      res.json(highscoresFound);
+    });
+});
+
+router.get('/:category', function(req, res, next) {
+  models.highscores
+    .findAll({where: {category: parseInt(req.params.category)}})
+    .then(highscoresFound => {
+      res.json(highscoresFound);
+    });
+});
 
 // secured put route for admins
 router.put("/:id", function (req, res, next) {
