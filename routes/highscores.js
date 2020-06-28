@@ -6,7 +6,7 @@ var authService = require('../services/auth');
 
 // POST new highscore after quiz
 router.post('/', function (req, res, next) {
-    models.highscores.create(req.body)
+    models.highscores.create({...req.body, category: (req.body.category ? req.body.category : 0)})
       .then(newHighscore => {
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(newHighscore));
