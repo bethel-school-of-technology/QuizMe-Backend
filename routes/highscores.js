@@ -13,6 +13,7 @@ router.post('/', function (req, res, next) {
       })
       .catch(err => {
         res.status(400);
+        console.log(err.message)
         res.send(err.message);
       });
   });
@@ -20,7 +21,7 @@ router.post('/', function (req, res, next) {
 // GET for the highscores page
 router.get('/', function(req, res, next) {
   models.highscores
-    .findAll()
+    .findAll({ order: [["highscore", "DESC"]], limit: 5 } )
     .then(highscoresFound => {
       res.json(highscoresFound);
     });
