@@ -40,7 +40,7 @@ router.post('/login', function (req, res, next) {
     if (user) {
       let token = authService.signUser(user); 
       res.cookie('jwt', token); 
-      res.send('Login successful, you must be an administrator!');
+      res.send(token);
     } else {
       console.log('Wrong password, are you a hacker?!');
       res.redirect('login')
