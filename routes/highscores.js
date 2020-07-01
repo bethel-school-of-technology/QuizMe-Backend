@@ -38,14 +38,12 @@ router.get('/:category', function(req, res, next) {
 // secured put route for admins
 router.put("/:id", function (req, res, next) {
   let highscore_id = parseInt(req.params.id);
-  let token = req.cookies.jwt;
-
-  if (token) {
-    authService.verifyUser(token)
+  if (req.cookies.jwt) {
+    authService.verifyUser(req.cookies.jwt)
       .then(       
         models.highscores
           .update(req.body, { where: { id: highscore_id } })
-          .then(result => res.redirect('/'))
+          .then(result => {res.json(req.body)})
           .catch(err => {
             res.status(400);
             res.send("There was a problem updating the highscore.");
