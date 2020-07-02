@@ -9,6 +9,7 @@ var models = require('./models');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var highscoresRouter = require('./routes/highscores');
+var quipsRouter = require('./routes/quips')
 
 
 var app = express();
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/highscores', highscoresRouter);
+app.use('/quips', quipsRouter)
 
 models.sequelize.sync().then(() => console.log("DB Synced Up"))
     .catch(() => console.log("DB Failed to sync"));
