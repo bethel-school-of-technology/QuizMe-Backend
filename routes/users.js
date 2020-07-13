@@ -33,9 +33,9 @@ router.post('/login', function (req, res, next) {
   }).then(user => {
     if (!user) {
       console.log('User not found')
-      return res.status(401).json({
-        message: "Login Failed, sad day..."
-      });
+      return res.status(401).json(
+        null
+      );
     }
     if (user) {
       let token = authService.signUser(user); 
