@@ -18,14 +18,17 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
-var server = http.createServer(app);
-
+if (process.env.SSL_KEY && process.env.SSL_CERT) {
+  var key = fs.readFileSync(process.env.SSL_KEY);
+  var cert = fs.readFileSync(process.env.SSL_CERT);
+  var server = https.createServer({ key, cert }, app);
+}
+else var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, process.env.HOST ? process.env.HOST : undefined);
 server.on('error', onError);
 server.on('listening', onListening);
 
